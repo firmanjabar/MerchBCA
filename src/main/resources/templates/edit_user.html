@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit User | MerchBCA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+</head>
+<body>
+    <div class="container text-center">
+        <h1>Edit User</h1>
+        <h3><a th:href="@{/users}">User</a></h3>
+    </div>
+    <div class="container card col-12 col-md-6">
+        <form class="m-2" th:action="@{/users/{id} (id=${user.id})}" method="post" th:object="${user}">
+            <div class="mb-3">
+                <label for="inputId" class="form-label">Id Number</label>
+                <input type="text" class="form-control" id="inputId" th:field="*{id}" required disabled>
+            </div>
+            <div class="mb-3">
+                <label for="inputName" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="inputName" th:field="*{name}" required>
+            </div>
+            <div class="mb-3">
+                <label for="inputEmail" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="inputEmail" th:field="*{email}" required>
+            </div>
+            <div class="mb-3">
+                <label for="inputPassword" class="form-label">Password</label>
+                <input type="password" class="form-control" id="inputPassword" th:field="*{password}" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <script src="/webjars/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

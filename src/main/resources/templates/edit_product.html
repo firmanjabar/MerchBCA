@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Product | MerchBCA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+</head>
+<body>
+    <div class="container text-center">
+        <h1>Edit Product</h1>
+        <h3><a th:href="@{/products}">Product</a></h3>
+    </div>
+    <div class="container card col-12 col-md-6">
+        <form class="m-2" th:action="@{/products/{id} (id=${product.id})}" method="post" th:object="${product}">
+            <div class="mb-3">
+                <label for="inputId" class="form-label">Id Number</label>
+                <input type="text" class="form-control" id="inputId" th:field="*{id}" required disabled>
+            </div>
+            <div class="mb-3">
+                <label for="inputName" class="form-label">Product Name</label>
+                <input type="text" class="form-control" id="inputName" th:field="*{name}" required>
+            </div>
+            <div class="mb-3">
+                <label for="inputProdNumb" class="form-label">Product Number</label>
+                <input type="text" class="form-control" id="inputProdNumb" th:field="*{product_numb}" required>
+            </div>
+            <div class="mb-3">
+                <label for="inputCategory" class="form-label">Product Number</label>
+                <select id="inputCategory" th:field="*{category}" name="category" class="form-select" aria-label="Select Category" >
+<!--                <option>Choose Category</option>-->
+                    <option th:each="category: ${listCategories}" th:text="${category.name}" th:value="${category.name}">Category</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="inputStock" class="form-label">Stock</label>
+                <input type="text" class="form-control" id="inputStock" th:field="*{stock}" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <script src="/webjars/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

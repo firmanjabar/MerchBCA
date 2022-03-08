@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Category | MerchBCA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+</head>
+<body>
+    <div class="container text-center">
+        <h1>Edit Category</h1>
+        <h3><a th:href="@{/categories}">Category</a></h3>
+    </div>
+    <div class="container card col-12 col-md-6">
+        <form class="m-2" th:action="@{/categories/{id} (id=${category.id})}" method="post" th:object="${category}">
+            <div class="mb-3">
+                <label for="inputId" class="form-label">Id Number</label>
+                <input type="text" class="form-control" id="inputId" th:field="*{id}" required disabled>
+            </div>
+            <div class="mb-3">
+                <label for="inputName" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="inputName" th:field="*{name}" required>
+            </div>
+            <div class="form-floating mb-3">
+                <textarea class="form-control" maxlength="500" id="floatingTextarea" style="height: 100px" th:field="*{desc}" required></textarea>
+                <label for="floatingTextarea">Description</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <script src="/webjars/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home | MerchBCA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="display:contents;">
+                <li class="nav-item">
+                    <h4>
+                        <span class="nav-link active">[[${#request.userPrincipal.principal.fullName}]]</span>
+                    </h4>
+                </li>
+                <li class="nav-item">
+                    <span class="nav-link active" id="weather"></span>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container text-center">
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out"/>
+        </form>
+        <h1>Merch BCA</h1>
+        <h3><a th:href="@{/users}">User</a></h3>
+        <h3><a th:href="@{/categories}">Category</a></h3>
+        <h3><a th:href="@{/products}">Product</a></h3>
+    </div>
+    <script src="/webjars/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+        navigator.geolocation.getCurrentPosition(function(position) {
+            let lat = position.coords.latitude;
+            let long = position.coords.longitude;
+
+            const API_KEY = "aff45a39dfdfb8727b35e494229afee0";
+
+            fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${API_KEY}`)
+                .then(response => response.json())
+                .then(data => {
+                    const weather = document.getElementById("weather");
+                    weather.innerHTML= `
+                        <span style="display:flex;flex-direction:column">
+                          <span>${data.name}, ${data.sys.country}. <img src="http://openweathermap.org/img/wn/${data.weather[0].icon}.png" alt="Weather icon">
+                          </span>
+                          <span class="badge bg-secondary">${data.weather[0].main} - ${data.main.temp}℉</span>
+                        </span>
+                    `;
+                });
+        });
+    </script>
+</body>
+</html>
