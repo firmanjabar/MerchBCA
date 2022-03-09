@@ -9,7 +9,6 @@
     <link rel="icon" type="image/x-icon" href="/images/logo.png">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <title>Home | MerchBCA</title>
-<!--    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>-->
 </head>
 <body>
 <div id="__next" data-reactroot="">
@@ -22,7 +21,7 @@
                             <div class="header-left">
                                 <div class="brand-logo">
                                     <a class="mini-logo" href="index.html">
-                                        <img src="images/logo.png" alt="" width="50"/>
+                                        <img src="/images/logo.png" alt="" width="50"/>
                                     </a>
                                 </div>
                                 <div class="search">
@@ -47,7 +46,7 @@
         <div class="sidebar">
             <div class="brand-logo">
                 <a class="full-logo" th:href="@{/}"
-                ><img src="images/logo2.png" alt="logo" width="200"
+                ><img src="/images/logo2.png" alt="logo" width="200"
                 /></a>
             </div>
             <div class="menu">
@@ -102,7 +101,7 @@
                         >
                             <div class="promotion-detail">
                                 <h3 class="text-white mb-3">
-                                    Discover, Collect, Sell and Create your Own NFT
+                                    Selamat Datang, [[${#request.userPrincipal.principal.fullName}]]
                                 </h3>
                                 <p>
                                     Digital marketplace for crypto collectibles and non
@@ -118,20 +117,6 @@
         </div>
     </div>
 </div>
-<!--    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">-->
-<!--        <div class="container">-->
-<!--            <ul class="navbar-nav me-auto mb-2 mb-lg-0 row" style="display:contents;">-->
-<!--                <li class="nav-item col-12 col-md-9">-->
-<!--                    <h4>-->
-<!--                        <span class="nav-link active"></span>-->
-<!--                    </h4>-->
-<!--                </li>-->
-<!--                <li class="nav-item col-12 col-md-3">-->
-<!--                    <span class="nav-link active" id="weather"></span>-->
-<!--                </li>-->
-<!--            </ul>-->
-<!--        </div>-->
-<!--    </nav>-->
 
     <script src="/webjars/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script async src="/assets/js/weather_api.js"></script>
