@@ -7,8 +7,7 @@
     <meta name="next-head-count" content="2" />
     <link rel="stylesheet" href="/assets/css/style.css" />
     <link rel="icon" type="image/x-icon" href="/images/logo.png">
-    <link href="https://cdn.remixicon.com/releases/v1.2.2/remixicon.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <title>Home | MerchBCA</title>
 <!--    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>-->
 </head>
@@ -22,27 +21,20 @@
                         <div class="header-content">
                             <div class="header-left">
                                 <div class="brand-logo">
-                                    <a class="mini-logo" href="index.html"
-                                    ><img src="images/logo.png" alt="" width="50"
-                                    /></a>
+                                    <a class="mini-logo" href="index.html">
+                                        <img src="images/logo.png" alt="" width="50"/>
+                                    </a>
                                 </div>
                                 <div class="search">
-                                    <form action="#">
-                        <span><i class="ri-search-line"></i></span
-                        ><input type="text" placeholder="Search Here" />
-                                    </form>
+                                    <span class="nav-link active" id="weather"></span>
                                 </div>
                             </div>
                             <div class="header-right">
                                 <div class="dropdown profile_log dropdown">
-                                    <div
-                                            data-toggle="dropdown"
-                                            aria-haspopup="true"
-                                            class=""
-                                            aria-expanded="false"
-                                    >
+                                    <div data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <div class="user icon-menu active">
-                                            <span><img src="/images/profile.jpg" alt="" /></span>
+                                            <span class="d-none d-md-block">[[${#request.userPrincipal.principal.fullName}]]</span>
+                                            <span style="margin-left:2px"><img src="/images/profile.jpg" alt="" /></span>
                                         </div>
                                     </div>
                                 </div>
@@ -54,35 +46,49 @@
         </div>
         <div class="sidebar">
             <div class="brand-logo">
-                <a class="full-logo" href="dashboard"
+                <a class="full-logo" th:href="@{/}"
                 ><img src="images/logo2.png" alt="logo" width="200"
                 /></a>
             </div>
             <div class="menu">
                 <ul>
                     <li class="active">
-                        <a href="dashboard"
-                        ><span><i class="ri-archive-drawer-fill"></i></i></span
-                        ><span class="nav-text">Products</span></a
-                        >
+                        <a th:href="@{/}">
+                            <span>
+                                <i class="ri-dashboard-fill"></i>
+                            </span>
+                            <span class="nav-text">Dashboard</span>
+                        </a>
                     </li>
                     <li class="">
-                        <a href="bids"
-                        ><span><i class="ri-layout-grid-fill"></i></span
-                        ><span class="nav-text">Product Categories</span></a
-                        >
+                        <a th:href="@{/products}">
+                            <span>
+                                <i class="ri-archive-drawer-fill"></i>
+                            </span>
+                            <span class="nav-text">Products</span>
+                        </a>
                     </li>
                     <li class="">
-                        <a href="saved"
-                        ><span><i class="ri-user-fill"></i></span
-                        ><span class="nav-text">Users</span></a
-                        >
+                        <a th:href="@{/categories}">
+                            <span>
+                                <i class="ri-node-tree"></i>
+                            </span>
+                            <span class="nav-text">Product Categories</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a th:href="@{/users}">
+                            <span><i class="ri-user-fill"></i></span>
+                            <span class="nav-text">Users</span>
+                        </a>
                     </li>
                     <li class="logout">
-                        <a href="signin"
-                        ><span><i class="ri-logout-circle-line"></i></span
-                        ><span class="nav-text">Signout</span></a
-                        >
+                        <form id="formLogout" th:action="@{/logout?logout}" method="post">
+                        <a href="#" id="submitLogout">
+                            <span><i class="ri-logout-circle-line"></i></span>
+                            <span class="nav-text">Signout</span>
+                        </a>
+                        </form>
                     </li>
                 </ul>
             </div>
@@ -117,7 +123,7 @@
 <!--            <ul class="navbar-nav me-auto mb-2 mb-lg-0 row" style="display:contents;">-->
 <!--                <li class="nav-item col-12 col-md-9">-->
 <!--                    <h4>-->
-<!--                        <span class="nav-link active">[[${#request.userPrincipal.principal.fullName}]]</span>-->
+<!--                        <span class="nav-link active"></span>-->
 <!--                    </h4>-->
 <!--                </li>-->
 <!--                <li class="nav-item col-12 col-md-3">-->
@@ -127,16 +133,8 @@
 <!--        </div>-->
 <!--    </nav>-->
 
-<!--    <div class="container text-center">-->
-<!--        <form th:action="@{/logout?logout}" method="post">-->
-<!--            <input type="submit" value="Sign Out"/>-->
-<!--        </form>-->
-<!--        <h1>Merch BCA</h1>-->
-<!--        <h3><a th:href="@{/users}">User</a></h3>-->
-<!--        <h3><a th:href="@{/categories}">Category</a></h3>-->
-<!--        <h3><a th:href="@{/products}">Product</a></h3>-->
-<!--    </div>-->
     <script src="/webjars/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script async src="/assets/js/weather_api.js"></script>
+    <script src="/assets/js/logout.js"></script>
 </body>
 </html>

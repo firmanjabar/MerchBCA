@@ -7,8 +7,7 @@
     <meta name="next-head-count" content="2" />
     <link rel="stylesheet" href="/assets/css/style.css" />
     <link rel="icon" type="image/x-icon" href="/images/logo.png">
-    <link href="https://cdn.remixicon.com/releases/v1.2.2/remixicon.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
 </head>
 <body>
@@ -19,11 +18,11 @@
                 <div class="col-xl-5 col-md-6">
                     <div class="mini-logo text-center my-4">
                         <a href="/"><img src="images/logo2.png" alt="logo" width="300px"/></a>
-                        <div th:if="${param.error}" class="alert alert-danger d-flex justify-content-center" role="alert">
+                        <div th:if="${param.error}" class="mt-2 alert alert-danger d-flex justify-content-center" role="alert">
                             <i class="ri-close-circle-line mx-2" style="font-size:18px"></i>
                             <span>Email or Password are Invalid</span>
                         </div>
-                        <div th:if="${param.logout}" class="alert alert-info d-flex justify-content-center" role="alert">
+                        <div th:if="${param.logout}" class="mt-2 alert alert-info d-flex justify-content-center" role="alert">
                             <i class="ri-checkbox-circle-line mx-2" style="font-size:18px"></i>
                             <span>You have been signed out</span>
                         </div>
