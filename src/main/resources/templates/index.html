@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://thymeleaf.org">
+
 <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
     <meta charset="utf-8" />
@@ -10,30 +11,34 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <title>Home | MerchBCA</title>
 </head>
+
 <body>
-<div id="__next" data-reactroot="">
-    <div id="main-wrapper" class="admin">
-        <div class="header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xxl-12">
-                        <div class="header-content">
-                            <div class="header-left">
-                                <div class="brand-logo">
-                                    <a class="mini-logo" href="index.html">
-                                        <img src="/images/logo.png" alt="" width="50"/>
-                                    </a>
+    <div id="__next" data-reactroot="">
+        <div id="main-wrapper" class="admin">
+            <div class="header">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xxl-12">
+                            <div class="header-content">
+                                <div class="header-left">
+                                    <div class="brand-logo">
+                                        <a class="mini-logo" href="index.html">
+                                            <img src="/images/logo.png" alt="" width="50" />
+                                        </a>
+                                    </div>
+                                    <div class="search">
+                                        <span class="nav-link active" id="weather"></span>
+                                    </div>
                                 </div>
-                                <div class="search">
-                                    <span class="nav-link active" id="weather"></span>
-                                </div>
-                            </div>
-                            <div class="header-right">
-                                <div class="dropdown profile_log dropdown">
-                                    <div data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <div class="user icon-menu active">
-                                            <span class="d-none d-md-block">[[${#request.userPrincipal.principal.fullName}]]</span>
-                                            <span style="margin-left:2px"><img src="/images/profile.jpg" alt="" /></span>
+                                <div class="header-right">
+                                    <div class="dropdown profile_log dropdown">
+                                        <div data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <div class="user icon-menu active">
+                                                <span
+                                                    class="d-none d-md-block">[[${#request.userPrincipal.principal.fullName}]]</span>
+                                                <span style="margin-left:2px"><img src="/images/profile.jpg"
+                                                        alt="" /></span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -42,73 +47,68 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="sidebar">
-            <div class="brand-logo">
-                <a class="full-logo" th:href="@{/}"
-                ><img src="/images/logo2.png" alt="logo" width="200"
-                /></a>
+            <div class="sidebar">
+                <div class="brand-logo">
+                    <a class="full-logo" th:href="@{/}"><img src="/images/logo2.png" alt="logo" width="200" /></a>
+                </div>
+                <div class="menu">
+                    <ul>
+                        <li class="active">
+                            <a th:href="@{/}">
+                                <span>
+                                    <i class="ri-dashboard-fill"></i>
+                                </span>
+                                <span class="nav-text">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a th:href="@{/products}">
+                                <span>
+                                    <i class="ri-archive-drawer-fill"></i>
+                                </span>
+                                <span class="nav-text">Products</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a th:href="@{/categories}">
+                                <span>
+                                    <i class="ri-node-tree"></i>
+                                </span>
+                                <span class="nav-text">Product Categories</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a th:href="@{/users}">
+                                <span><i class="ri-user-fill"></i></span>
+                                <span class="nav-text">Users</span>
+                            </a>
+                        </li>
+                        <li class="logout">
+                            <form id="formLogout" th:action="@{/logout?logout}" method="post">
+                                <a href="#" id="submitLogout">
+                                    <span><i class="ri-logout-circle-line"></i></span>
+                                    <span class="nav-text">Signout</span>
+                                </a>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="menu">
-                <ul>
-                    <li class="active">
-                        <a th:href="@{/}">
-                            <span>
-                                <i class="ri-dashboard-fill"></i>
-                            </span>
-                            <span class="nav-text">Dashboard</span>
-                        </a>
-                    </li>
-                    <li class="">
-                        <a th:href="@{/products}">
-                            <span>
-                                <i class="ri-archive-drawer-fill"></i>
-                            </span>
-                            <span class="nav-text">Products</span>
-                        </a>
-                    </li>
-                    <li class="">
-                        <a th:href="@{/categories}">
-                            <span>
-                                <i class="ri-node-tree"></i>
-                            </span>
-                            <span class="nav-text">Product Categories</span>
-                        </a>
-                    </li>
-                    <li class="">
-                        <a th:href="@{/users}">
-                            <span><i class="ri-user-fill"></i></span>
-                            <span class="nav-text">Users</span>
-                        </a>
-                    </li>
-                    <li class="logout">
-                        <form id="formLogout" th:action="@{/logout?logout}" method="post">
-                        <a href="#" id="submitLogout">
-                            <span><i class="ri-logout-circle-line"></i></span>
-                            <span class="nav-text">Signout</span>
-                        </a>
-                        </form>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="content-body" style="min-height: NaNpx">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xxl-12">
-                        <div
-                                class="promotion d-flex justify-content-between align-items-center"
-                        >
-                            <div class="promotion-detail">
-                                <h3 class="text-white mb-3">
-                                    Selamat Datang, [[${#request.userPrincipal.principal.fullName}]]
-                                </h3>
-                                <p>
-                                    Digital marketplace for crypto collectibles and non
-                                    fungable tokens
-                                </p>
-                                <a class="btn btn-primary me-3">Explore</a
-                                ><a class="btn btn-secondary">Create</a>
+            <div class="content-body" style="min-height: NaNpx">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xxl-12">
+                            <div class="promotion d-flex justify-content-between align-items-center">
+                                <div class="promotion-detail">
+                                    <h3 class="text-white mb-3">
+                                        Selamat Datang, [[${#request.userPrincipal.principal.fullName}]]
+                                    </h3>
+                                    <p>
+                                        Digital marketplace for crypto collectibles and non
+                                        fungable tokens
+                                    </p>
+                                    <a class="btn btn-primary me-3">Explore</a><a class="btn btn-secondary">Create</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -116,10 +116,10 @@
             </div>
         </div>
     </div>
-</div>
 
     <script src="/webjars/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script async src="/assets/js/weather_api.js"></script>
     <script src="/assets/js/logout.js"></script>
 </body>
+
 </html>

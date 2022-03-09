@@ -1,8 +1,6 @@
 package com.haimp26.MerchBCA.controllers.apis;
 
-import com.haimp26.MerchBCA.models.entities.Category;
 import com.haimp26.MerchBCA.models.entities.User;
-import com.haimp26.MerchBCA.services.ApiCategoryService;
 import com.haimp26.MerchBCA.services.ApiUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
