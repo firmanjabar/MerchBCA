@@ -83,6 +83,11 @@
                                 <input type="number" class="form-control" id="inputStock"
                                        th:field="*{stock}" placeholder="Stock" required>
                             </div>
+                            <div class="mb-3">
+                                <label for="inputImage" class="form-label">Link Image</label>
+                                <input type="text" class="form-control" id="inputImage"
+                                       th:field="*{image}" placeholder="Image" required>
+                            </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                             <a th:href="@{/products}" class="btn btn-danger">Cancel</a>
                         </form>

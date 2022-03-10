@@ -3,6 +3,7 @@ package com.haimp26.MerchBCA.controllers;
 import com.haimp26.MerchBCA.models.entities.Category;
 import com.haimp26.MerchBCA.models.repos.CategoryRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,9 @@ import java.util.List;
 @Controller
 public class CategoryController {
 
+    @Value("${app.apikey}")
+    private String apikey;
+
     @Autowired
     CategoryRepo categoryRepo;
 
@@ -22,6 +26,7 @@ public class CategoryController {
     public String getListCategory(Model model){
         List<Category> listCategories = categoryRepo.findAll();
         model.addAttribute("listCategories", listCategories);
+        model.addAttribute("apikey", apikey);
 
         return "categories";
     }
@@ -29,6 +34,7 @@ public class CategoryController {
     @GetMapping("/categories/add")
     public String getAddCategory(Model model){
         model.addAttribute("category", new Category());
+        model.addAttribute("apikey", apikey);
 
         return "add_category";
     }
@@ -43,6 +49,7 @@ public class CategoryController {
     @GetMapping("/categories/edit/{id}")
     public String getEditCategory(@PathVariable("id") Long id, Model model){
         model.addAttribute("category", categoryRepo.findById(id).get());
+        model.addAttribute("apikey", apikey);
 
         return "edit_category";
     }

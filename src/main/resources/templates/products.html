@@ -41,8 +41,11 @@
                     {
                         title: 'Actions',
                         data: 'id',
+                        width: '30%',
                         render: function (data) {
                             return `
+                                <a href="/products/view/${data}"
+                                    class="btn btn-sm btn-secondary">View</a> |
                                 <a href="/products/edit/${data}"
                                     class="btn btn-sm btn-primary">Edit</a> |
                                 <a href="/products/${data}"

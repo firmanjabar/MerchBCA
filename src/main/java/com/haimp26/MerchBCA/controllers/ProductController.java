@@ -5,6 +5,7 @@ import com.haimp26.MerchBCA.models.entities.Product;
 import com.haimp26.MerchBCA.models.repos.CategoryRepo;
 import com.haimp26.MerchBCA.models.repos.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,9 @@ import java.util.List;
 @Controller
 public class ProductController {
 
+    @Value("${app.apikey}")
+    private String apikey;
+
     @Autowired
     ProductRepo productRepo;
 
@@ -27,6 +31,7 @@ public class ProductController {
     public String getListProduct(Model model){
         List<Product> listProducts = productRepo.findAll();
         model.addAttribute("listProducts", listProducts);
+        model.addAttribute("apikey", apikey);
 
         return "products";
     }
@@ -37,6 +42,7 @@ public class ProductController {
         model.addAttribute("listCategories", listCategories);
 
         model.addAttribute("product", new Product());
+        model.addAttribute("apikey", apikey);
 
         return "add_product";
     }
@@ -54,6 +60,7 @@ public class ProductController {
         model.addAttribute("listCategories", listCategories);
 
         model.addAttribute("product", productRepo.findById(id).get());
+        model.addAttribute("apikey", apikey);
 
         return "edit_product";
     }
@@ -66,6 +73,7 @@ public class ProductController {
         getProduct.setProduct_numb(product.getProduct_numb());
         getProduct.setCategory(product.getCategory());
         getProduct.setStock(product.getStock());
+        getProduct.setImage(product.getImage());
 
         productRepo.save(getProduct);
 
@@ -78,8 +86,11 @@ public class ProductController {
         return "redirect:/products";
     }
 
-    @GetMapping("/test")
-    public String testLayout(){
-        return "content1";
+    @GetMapping("/products/view/{id}")
+    public String getViewProduct(@PathVariable("id") Long id, Model model){
+        model.addAttribute("product", productRepo.findById(id).get());
+        model.addAttribute("apikey", apikey);
+
+        return "view_product";
     }
 }

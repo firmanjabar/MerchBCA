@@ -12,7 +12,37 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
     <title layout:title-pattern="$CONTENT_TITLE | $LAYOUT_TITLE">MerchBCA</title>
-    <script async src="/assets/js/weather_api.js"></script>
+    <style>
+        @media only screen and (max-width: 767px){
+            .search {
+                min-width: fit-content;
+                margin-right: 15px;
+            }
+        }
+    </style>
+    <script async th:inline="javascript" >
+        navigator.geolocation.getCurrentPosition(function(position) {
+        let lat = position.coords.latitude;
+        let long = position.coords.longitude;
+
+        const API_KEY = [[${apikey}]];
+
+        fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${API_KEY}`)
+            .then(response => response.json())
+            .then(data => {
+                const weather = document.getElementById("weather");
+                weather.innerHTML= `
+                    <span class="d-flex ">
+                        <img src="http://openweathermap.org/img/wn/${data.weather[0].icon}.png" alt="Weather icon">
+                        <div class="d-flex flex-column">
+                            <span style="font-size:medium; color:#62759d;">${data.name}, ${data.sys.country}.</span>
+                            <span class="badge bg-secondary" style="font-size:x-small;">${data.weather[0].main} - ${parseFloat(data.main.temp - 273.15).toFixed(2)}°C</span>
+                        </div>
+                     </span>
+                `;
+            });
+        });
+    </script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 </head>
 <body>
@@ -37,8 +67,8 @@
                             <div class="header-right">
                                 <div class="dropdown profile_log dropdown">
                                     <div data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <div class="user icon-menu active">
-                                            <span class="d-none d-md-block">[[${#request.userPrincipal.principal.fullName}]]</span>
+                                        <div class="user icon-menu active d-none d-sm-inline">
+                                            <span class="d-none d-lg-inline">[[${#request.userPrincipal.principal.fullName}]]</span>
                                             <span style="margin-left:2px"><img src="/images/profile.jpg" alt="profile photo" /></span>
                                         </div>
                                     </div>

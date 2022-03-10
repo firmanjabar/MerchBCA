@@ -3,6 +3,7 @@ package com.haimp26.MerchBCA.controllers;
 import com.haimp26.MerchBCA.models.entities.User;
 import com.haimp26.MerchBCA.models.repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +17,9 @@ import java.util.List;
 @Controller
 public class UserController {
 
+    @Value("${app.apikey}")
+    private String apikey;
+
     @Autowired
     UserRepo userRepo;
 
@@ -23,6 +27,7 @@ public class UserController {
     public String getListUser(Model model){
         List<User> listUsers = userRepo.findAll();
         model.addAttribute("listUsers", listUsers);
+        model.addAttribute("apikey", apikey);
 
         return "users";
     }
@@ -30,6 +35,7 @@ public class UserController {
     @GetMapping("/users/add")
     public String getAddUser(Model model){
         model.addAttribute("user", new User());
+        model.addAttribute("apikey", apikey);
 
         return "add_user";
     }
@@ -37,6 +43,7 @@ public class UserController {
     @GetMapping("/users/edit/{id}")
     public String getEditUser(@PathVariable("id") Long id, Model model){
         model.addAttribute("user", userRepo.findById(id).get());
+        model.addAttribute("apikey", apikey);
 
         return "edit_user";
     }
