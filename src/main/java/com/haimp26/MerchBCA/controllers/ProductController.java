@@ -78,5 +78,8 @@ public class ProductController {
         return "redirect:/products";
     }
 
-
+    @GetMapping("/test")
+    public String testLayout(){
+        return "content1";
+    }
 }
