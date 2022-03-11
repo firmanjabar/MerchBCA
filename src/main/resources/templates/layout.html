@@ -27,7 +27,7 @@
 
         const API_KEY = [[${apikey}]];
 
-        fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${API_KEY}`)
+        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${API_KEY}`)
             .then(response => response.json())
             .then(data => {
                 const weather = document.getElementById("weather");
@@ -56,7 +56,7 @@
                         <div class="header-content">
                             <div class="header-left">
                                 <div class="brand-logo">
-                                    <a class="mini-logo" href="index.html">
+                                    <a class="mini-logo" href="/">
                                         <img src="/images/logo.png" alt="" width="50" />
                                     </a>
                                 </div>
