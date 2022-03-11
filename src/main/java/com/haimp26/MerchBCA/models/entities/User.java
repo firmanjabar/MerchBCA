@@ -10,12 +10,20 @@ import javax.persistence.*;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(
+            name="user_sequence",
+            sequenceName = "user_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "user_sequence"
+    )
     private Long id;
-    @Column(name = "full_name", nullable = false)
+//    @Column(name = "full_name", nullable = false)
     private String name;
-    @Column(unique = true, nullable = false, length = 75)
+//    @Column(unique = true, nullable = false, length = 75)
     private String email;
-    @Column(nullable = false)
+//    @Column(nullable = false)
     private String password;
 }

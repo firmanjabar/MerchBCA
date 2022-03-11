@@ -10,13 +10,21 @@ import javax.persistence.*;
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(
+            name="product_sequence",
+            sequenceName = "product_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "product_sequence"
+    )
     private Long id;
-    @Column(name = "name", length = 100)
+//    @Column(name = "name", length = 100)
     private String name;
     private Integer product_numb;
     private String category;
     private Integer stock;
-    @Column(length = 600)
+//    @Column(length = 600)
     private String image;
 }

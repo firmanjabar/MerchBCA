@@ -5,6 +5,8 @@ import com.haimp26.MerchBCA.services.ApiUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,5 +23,10 @@ public class ApiUserController {
         }catch (Exception e){
             return new ResponseEntity<Iterable<User>>(HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @PostMapping
+    public User create(@RequestBody User user){
+        return apiUserService.create(user);
     }
 }

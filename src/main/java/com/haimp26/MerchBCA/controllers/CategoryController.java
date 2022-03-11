@@ -59,7 +59,7 @@ public class CategoryController {
         Category getCategory = categoryRepo.findById(id).get();
         getCategory.setId(id);
         getCategory.setName(category.getName());
-        getCategory.setDesc(category.getDesc());
+        getCategory.setDescription(category.getDescription());
 
         categoryRepo.save(getCategory);
 
