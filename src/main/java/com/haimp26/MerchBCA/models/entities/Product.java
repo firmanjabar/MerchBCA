@@ -25,6 +25,6 @@ public class Product {
     private Integer product_numb;
     private String category;
     private Integer stock;
-//    @Column(length = 600)
+    @Column(length = 600)
     private String image;
 }

@@ -21,6 +21,6 @@ public class Category {
     private Long id;
 //    @Column(name = "name", length = 50, unique = true)
     private String name;
-//    @Column(name="description", length = 500)
+    @Column(name="description", length = 600)
     private String description;
 }

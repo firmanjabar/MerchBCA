@@ -20,10 +20,10 @@ public class User {
             generator = "user_sequence"
     )
     private Long id;
-//    @Column(name = "full_name", nullable = false)
+    @Column(nullable = false)
     private String name;
-//    @Column(unique = true, nullable = false, length = 75)
+    @Column(unique = true, nullable = false, length = 75)
     private String email;
-//    @Column(nullable = false)
+    @Column(nullable = false)
     private String password;
 }
